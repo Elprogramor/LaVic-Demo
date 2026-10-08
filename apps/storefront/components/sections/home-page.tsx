@@ -3,14 +3,18 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { OutlineWord } from "@/components/ui/outline-word";
-import { ArrowIcon } from "@/components/ui/icons";
-import { ProductGrid } from "@/components/commerce/product-grid";
-import { products } from "@/data/products";
+import { ArrowIcon, HeartIcon } from "@/components/ui/icons";
+
+function Stars() {
+  return <span className="home-stars" aria-label="5 estrelas">★★★★★</span>;
+}
 
 export function HomePage() {
   return (
     <div className="page-frame">
       <a className="skip-link" href="#main-content">Ir para o conteúdo</a>
+
+      {/* Hero congelado a partir da v3: não alterar sem comparação direta com o Figma. */}
       <section className="home-hero">
         <SiteHeader />
         <span className="eyebrow-pill home-hero-badge">Descubra toda nossa seleção</span>
@@ -29,77 +33,132 @@ export function HomePage() {
       </section>
 
       <main id="main-content">
-        <section className="home-testimonial">
-          <h2>O que dizem</h2>
+        <section className="home-testimonial" aria-label="Depoimento">
+          <div className="home-testimonial-nav">
+            <h2>O que dizem</h2>
+            <div className="home-testimonial-arrows" aria-hidden="true">
+              <span className="home-small-arrow"><ArrowIcon direction="left" /></span>
+              <span className="home-small-arrow"><ArrowIcon /></span>
+            </div>
+          </div>
           <blockquote>
-            <p>“Uma experiência de marca que transforma uma bebida artesanal em algo que você quer descobrir, provar e compartilhar.”</p>
-            <footer><span className="testimonial-avatar">L</span><span>Demonstração de posicionamento LaVic</span></footer>
+            <span className="home-quote-mark" aria-hidden="true">“</span>
+            <p>Uma experiência de marca que transforma uma bebida artesanal em algo que você quer descobrir, provar e compartilhar.</p>
+            <footer>
+              <span className="testimonial-avatar"><Image src="/home/francis-avatar.png" alt="" fill sizes="54px" /></span>
+              <span><strong>Francis Moreira</strong><small>Demonstração de experiência LaVic</small></span>
+            </footer>
           </blockquote>
         </section>
 
-        <section className="home-products content-shell">
-          <div className="section-heading">
-            <div><h2>Escolha seu sabor.</h2><p>Uma coleção demonstrativa para apresentar como a linha LaVic pode ganhar força visual e comercial em um canal próprio.</p></div>
-            <Link href="/sabores" className="arrow-circle" aria-label="Ver todos os sabores"><ArrowIcon /></Link>
+        <section className="home-flavors" aria-labelledby="home-flavors-title">
+          <div className="home-flavors-heading">
+            <div>
+              <h2 id="home-flavors-title">Sabores Engarrafados.</h2>
+              <p>LaVic Limão · 1L</p>
+            </div>
+            <div className="home-flavors-arrows" aria-hidden="true">
+              <span className="home-small-arrow"><ArrowIcon direction="left" /></span>
+              <span className="home-small-arrow"><ArrowIcon /></span>
+            </div>
           </div>
-          <ProductGrid products={products} />
+
+          <div className="home-flavor-grid">
+            {[0, 1, 2, 3].map((index) => (
+              <article className="home-flavor-card" key={index}>
+                <Link href="/produto/limao-1l" className="home-flavor-media">
+                  <Image src="/products/three-lime-bottles.png" alt="LaVic Limão" fill sizes="224px" />
+                </Link>
+                <h3>LaVic Limão</h3>
+                <Stars />
+                <p>R$ 18,90</p>
+              </article>
+            ))}
+          </div>
         </section>
 
-        <section className="rhythm-panel">
-          <h2>Um novo ritmo para a sua rotina.</h2>
-          <div className="rhythm-bottles"><Image src="/products/three-lime-bottles.png" alt="" fill sizes="50vw" /></div>
-          <div className="rhythm-copy">
-            <p>A LaVic pode ocupar mais do que um espaço na geladeira. A experiência digital ajuda a transformar produto, história, ocasião de consumo e compra em uma jornada única.</p>
-            <Link href="/sobre" className="button-secondary">Conheça a LaVic</Link>
-          </div>
-        </section>
+        <section className="home-rhythm" aria-labelledby="home-rhythm-title">
+          <div className="home-rhythm-panel">
+            <h2 id="home-rhythm-title">A kombucha que acompanha o seu ritmo.</h2>
 
-        <section className="content-shell intro-section">
-          <h2>Uma breve introdução sobre quem somos.</h2>
-          <div className="intro-copy">
-            <p>A LaVic transforma fermentação natural em uma bebida contemporânea. A proposta deste storefront é levar essa mesma identidade para o digital, criando um ponto oficial para descobrir produtos, comprar, conhecer a marca e abrir novas oportunidades comerciais.</p>
-            <div className="intro-stats">
-              <div className="intro-stat"><strong>04</strong><span>sabores na coleção demonstrativa</span></div>
-              <div className="intro-stat"><strong>1L</strong><span>formato principal desta apresentação</span></div>
+            <div className="home-rhythm-stack-card" aria-label="Três garrafas LaVic Limão">
+              <span className="home-rhythm-bottle home-rhythm-bottle--1"><Image src="/products/lavic-limao-cutout.png" alt="" fill sizes="190px" /></span>
+              <span className="home-rhythm-bottle home-rhythm-bottle--2"><Image src="/products/lavic-limao-cutout.png" alt="" fill sizes="190px" /></span>
+              <span className="home-rhythm-bottle home-rhythm-bottle--3"><Image src="/products/lavic-limao-cutout.png" alt="" fill sizes="190px" /></span>
+            </div>
+
+            <div className="home-rhythm-content">
+              <p className="home-rhythm-lead">Uma experiência leve e refrescante para diferentes momentos do dia, apresentada com a mesma identidade visual da LaVic.</p>
+              <div className="home-rhythm-visuals">
+                <div className="home-rhythm-visual"><Image src="/products/lavic-limao-cutout.png" alt="LaVic Limão" fill sizes="142px" /></div>
+                <div className="home-rhythm-visual home-rhythm-visual--pair">
+                  <span><Image src="/products/lavic-limao-cutout.png" alt="" fill sizes="88px" /></span>
+                  <span><Image src="/products/lavic-limao-cutout.png" alt="" fill sizes="72px" /></span>
+                </div>
+              </div>
+              <p className="home-rhythm-detail">Do primeiro contato com a marca à escolha do produto, cada bloco foi pensado para manter a LaVic reconhecível, desejável e simples de comprar.</p>
+              <Link href="/sobre" className="home-rhythm-link">Conheça a LaVic</Link>
             </div>
           </div>
         </section>
 
-        <section className="sparkling-section">
-          <OutlineWord className="sparkling-word-right">kombucha</OutlineWord>
-          <OutlineWord className="sparkling-word-left">lavic</OutlineWord>
-          <div className="content-shell sparkling-grid">
-            <div className="sparkling-media"><Image src="/home/sparkling.webp" alt="Seleção especial LaVic" fill sizes="(max-width: 900px) 100vw, 50vw" /></div>
-            <div className="sparkling-copy">
-              <span className="eyebrow-pill">Edição especial</span>
-              <h2>Espumante LaVic.</h2>
-              <p>Uma apresentação premium para mostrar como produtos especiais podem ganhar narrativa própria, ticket diferenciado e destaque dentro da mesma plataforma.</p>
-              <div className="sparkling-price">R$ 49,98</div>
+        <section className="home-intro" aria-labelledby="home-intro-title">
+          <h2 id="home-intro-title">Uma breve<br />introdução<br />sobre quem<br />somos.</h2>
+          <div className="home-intro-copy">
+            <p>A LaVic transforma fermentação natural em uma bebida contemporânea. A experiência digital acompanha essa proposta com clareza, espaço e uma apresentação de produto que valoriza a marca.</p>
+            <div className="home-intro-stats">
+              <div><strong>04</strong><span>sabores na coleção demonstrativa</span></div>
+              <div><strong>1L</strong><span>formato principal desta apresentação</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="home-sparkling" aria-labelledby="home-sparkling-title">
+          <OutlineWord className="home-sparkling-word home-sparkling-word--right">kombucha</OutlineWord>
+          <OutlineWord className="home-sparkling-word home-sparkling-word--left">lavic</OutlineWord>
+
+          <h2 id="home-sparkling-title">Você pode ser elegante e<br />ainda ser saudável.</h2>
+          <p className="home-sparkling-description">Uma edição especial que amplia a narrativa LaVic sem perder leveza, frescor e presença de marca.</p>
+
+          <div className="home-sparkling-bottle"><Image src="/home/sparkling.webp" alt="Espumante LaVic" fill sizes="430px" /></div>
+
+          <div className="home-sparkling-purchase">
+            <span>Espumante LaVic.</span>
+            <strong>R$49,98</strong>
+            <div className="home-sparkling-actions">
               <Link href="/encomendas" className="button">Quero saber mais</Link>
+              <button type="button" className="home-favorite-button" aria-label="Adicionar aos favoritos"><HeartIcon /></button>
+            </div>
+            <div className="home-sparkling-thumbs" aria-hidden="true">
+              <span><Image src="/home/sparkling.webp" alt="" fill sizes="86px" /></span>
+              <span><Image src="/flavors/strawberry.webp" alt="" fill sizes="86px" /></span>
+              <span><Image src="/flavors/red-fruits.webp" alt="" fill sizes="86px" /></span>
             </div>
           </div>
         </section>
 
-        <section className="trust-strip">
-          <div className="content-shell trust-grid">
-            <h3>Produto vivo</h3>
-            <h3>Marca própria</h3>
-            <p>Um canal digital pensado para vender, contar história e criar relacionamento sem depender apenas de plataformas de terceiros.</p>
+        <section className="home-trust" aria-label="Diferenciais LaVic">
+          <div className="home-trust-grid">
+            <article><h3>Na bebida, vida e sabor.</h3></article>
+            <article><h3>Identidade própria LaVic.</h3></article>
+            <article><p>Uma marca com presença própria, feita para vender, contar história e construir relacionamento em um canal oficial.</p></article>
           </div>
         </section>
 
-        <section className="content-shell b2b-section">
-          <div className="b2b-panel">
-            <div className="b2b-copy">
+        <section className="home-b2b" aria-labelledby="home-b2b-title">
+          <div className="home-b2b-panel">
+            <div className="home-b2b-copy">
               <span>LaVic para negócios</span>
-              <h2>Quer levar LaVic para o seu espaço?</h2>
-              <p>Uma rota comercial dedicada para cafés, restaurantes, mercados, hotéis, academias, eventos e outros pontos de venda.</p>
-              <Link href="/revenda" className="button">Conhecer revenda</Link>
+              <h2 id="home-b2b-title">LaVic no seu negócio.</h2>
+              <p>Uma rota comercial direta para cafés, restaurantes, mercados, hotéis, academias, eventos e outros pontos de venda.</p>
+              <Link href="/revenda" className="home-b2b-link">Revenda</Link>
             </div>
-            <div className="b2b-bottle"><Image src="/products/lavic-limao-cutout.png" alt="Garrafa LaVic Limão" fill sizes="250px" /></div>
+            <div className="home-b2b-bottle home-b2b-bottle--large"><Image src="/products/lavic-limao-cutout.png" alt="Garrafa LaVic Limão" fill sizes="230px" /></div>
+            <div className="home-b2b-bottle home-b2b-bottle--small"><Image src="/products/lavic-limao-cutout.png" alt="" fill sizes="200px" /></div>
           </div>
         </section>
       </main>
+
       <SiteFooter />
     </div>
   );

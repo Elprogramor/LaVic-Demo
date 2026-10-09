@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CartProvider } from "@/components/commerce/cart-provider";
 import { CartDrawer } from "@/components/commerce/cart-drawer";
+import { SiteLoader } from "@/components/layout/site-loader";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,10 +19,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="pt-BR">
       <body>
-        <CartProvider>
-          {children}
-          <CartDrawer />
-        </CartProvider>
+        <SiteLoader />
+        <div className="site-reveal-shell">
+          <CartProvider>
+            {children}
+            <CartDrawer />
+          </CartProvider>
+        </div>
       </body>
     </html>
   );

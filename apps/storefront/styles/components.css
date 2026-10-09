@@ -305,3 +305,91 @@
   .site-footer-links-cluster { grid-template-columns: 1fr; gap: 32px; }
   .site-footer-bottom { display: grid; }
 }
+
+/* ========================================================================== */
+/* LaVic v3.3 — branded startup loader restoration                            */
+/* Restores the approved v0.2.10 timing/crossfade over the clean v3 shell.    */
+/* ========================================================================== */
+
+.site-reveal-shell {
+  min-height: 100%;
+}
+
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #02535c;
+  opacity: 1;
+  isolation: isolate;
+  will-change: opacity;
+  transition: opacity 780ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.site-loader--leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.site-loader__media {
+  position: relative;
+  width: min(600px, 82vw);
+  aspect-ratio: 2 / 1;
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  transform: scale(1);
+  will-change: opacity, transform;
+  transition:
+    opacity 420ms cubic-bezier(.22, 1, .36, 1),
+    transform 620ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.site-loader--leaving .site-loader__media {
+  opacity: 0;
+  transform: scale(.985);
+}
+
+.site-loader__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+}
+
+body.lavic-intro-active .site-reveal-shell {
+  opacity: .74;
+  filter: blur(5px);
+  transform: scale(.992);
+  transform-origin: 50% 18%;
+  will-change: opacity, filter, transform;
+  transition:
+    opacity 780ms cubic-bezier(.22, 1, .36, 1),
+    filter 780ms cubic-bezier(.22, 1, .36, 1),
+    transform 780ms cubic-bezier(.22, 1, .36, 1);
+}
+
+body.lavic-intro-active.lavic-intro-revealing .site-reveal-shell {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+@media (max-width: 720px) {
+  .site-loader__media {
+    width: min(520px, 92vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader,
+  .site-loader__media,
+  body.lavic-intro-active .site-reveal-shell {
+    transition-duration: .01ms !important;
+  }
+}

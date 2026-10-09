@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: { default: "LaVic Kombucha — Viva com gás", template: "%s · LaVic" },
   description: "LaVic Kombucha. Uma experiência digital demonstrativa para a marca.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  icons: {
+    icon: "/brand/icon.png",
+    shortcut: "/brand/icon.png",
+    apple: "/brand/icon.png",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

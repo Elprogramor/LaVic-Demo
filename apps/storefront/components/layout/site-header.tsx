@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -22,7 +23,9 @@ export function SiteHeader() {
   return (
     <>
       <header className="site-header">
-        <Link href="/" className="site-logo" aria-label="LaVic — início">LaVic</Link>
+        <Link href="/" className="site-logo" aria-label="LaVic — início">
+          <Image src="/brand/logo.png" alt="LaVic" width={124} height={48} priority />
+        </Link>
         <nav className="site-nav" aria-label="Navegação principal">
           {nav.map((item) => {
             const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);

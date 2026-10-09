@@ -14,11 +14,8 @@
   justify-self: start;
   display: inline-flex;
   align-items: center;
-  font-family: var(--lavic-font-display);
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -.04em;
 }
+.site-logo img { display: block; width: 112px; height: auto; }
 .site-nav {
   display: inline-flex;
   gap: 4px;

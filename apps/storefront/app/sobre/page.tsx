@@ -14,7 +14,7 @@ export default function AboutPage() {
         <div className="editorial-copy"><p>A narrativa desta demonstração parte do princípio de que a LaVic não precisa ser apresentada apenas como uma bebida. Produto, cuidado, processo, ocasiões de consumo e identidade visual podem trabalhar juntos para construir confiança e desejo.</p><p>Antes da publicação comercial, história, origem, ingredientes, processo produtivo e claims devem ser revisados diretamente com a marca.</p></div>
       </section>
       <section className="content-shell page-section">
-        <div style={{ position: "relative", minHeight: 520, borderRadius: 32, overflow: "hidden", background: "#f1f2ed" }}><Image src="/home/lifestyle-01.webp" alt="Atmosfera visual LaVic" fill sizes="100vw" style={{ objectFit: "cover" }} /></div>
+        <div style={{ position: "relative", minHeight: 520, borderRadius: 32, overflow: "hidden", background: "#f1f2ed" }}><Image src="/products/lavic-limao-composition.jpg" alt="Composição visual LaVic Limão" fill sizes="100vw" style={{ objectFit: "cover" }} /></div>
       </section>
     </PublicPage>
   );

@@ -9,7 +9,7 @@ const featuredFlavors = [
   {
     name: "LaVic Limão",
     href: "/produto/limao-1l",
-    image: "/products/three-lime-bottles.png",
+    image: "/products/lavic-limao-cutout.png",
     price: "R$ 18,90",
     caption: "cítrica e refrescante",
   },
@@ -23,14 +23,14 @@ const featuredFlavors = [
   {
     name: "LaVic Maracujá",
     href: "/produto/maracuja-1l",
-    image: "/flavors/passion-fruit.webp",
+    image: "/flavors/passion-fruit.png",
     price: "Em breve",
     caption: "tropical",
   },
   {
     name: "LaVic Uva Verde",
     href: "/sabores",
-    image: "/flavors/green-grape.webp",
+    image: "/flavors/green-grape.png",
     price: "Em breve",
     caption: "leve e aromática",
   },
@@ -57,7 +57,7 @@ export function HomePage() {
         </div>
         <Link href="/sabores" className="button home-hero-cta">ESCOLHA O SEU</Link>
         <aside className="home-hero-mini" aria-label="Produto em destaque">
-          <div className="home-hero-mini-media"><Image src="/products/three-lime-bottles.png" alt="Três garrafas LaVic Limão" fill sizes="145px" /></div>
+          <div className="home-hero-mini-media"><Image src="/products/lavic-limao-cutout.png" alt="Garrafa LaVic Limão" fill sizes="145px" /></div>
           <div><strong>LaVic Limão</strong><small>leve, cítrica, viva</small><div className="home-hero-mini-price"><span>R$ 18,90</span><span>★★★★★</span></div></div>
         </aside>
       </section>
@@ -162,7 +162,7 @@ export function HomePage() {
             <div className="home-sparkling-thumbs" aria-hidden="true">
               <span><Image src="/products/lavic-espumante-cutout.png" alt="" fill sizes="86px" /></span>
               <span><Image src="/products/lavic-espumante-composition.jpg" alt="" fill sizes="86px" /></span>
-              <span><Image src="/products/lavic-limao-photo.png" alt="" fill sizes="86px" /></span>
+              <span><Image src="/products/lavic-limao-composition.jpg" alt="" fill sizes="86px" /></span>
             </div>
           </div>
         </section>
